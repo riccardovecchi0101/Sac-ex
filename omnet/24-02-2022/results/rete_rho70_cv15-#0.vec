@@ -1,0 +1,43 @@
+version 3
+run rete_rho70_cv15-0-20260129-11:45:36-85722
+attr configname rete_rho70_cv15
+attr datetime 20260129-11:45:36
+attr datetimef 20260129-114536
+attr experiment rete_rho70_cv15
+attr inifile rete.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network rete
+attr processid 85722
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config cmdenv-performance-display false
+config cmdenv-status-frequency 60s
+config extends rete_Base
+config **.rho 0.7
+config **.cv 1.5
+config description "MG1 – sweep rho e cv"
+config **.mu 100
+config **.sink.lifeTime.result-recording-modes +histogram
+config **.srv.serviceTime.result-recording-modes +histogram
+config ned-path .;../environment/samples/queueinglib
+config network rete
+config sim-time-limit 300s
+config repeat 3
+config **.vector-recording false
+
+vector 0 rete.srv queueLength:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "queue length"
+vector 1 rete.sink lifeTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "lifetime of arrived jobs"
+attr unit s
+

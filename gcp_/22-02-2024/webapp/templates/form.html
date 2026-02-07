@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CANTIERI E UMARELL</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+<div class="container py-5">
+
+  <!-- TITOLO -->
+  <div class="text-center mb-4">
+    <h1 class="fw-bold">CANTIERI E UMARELL</h1>
+  </div>
+
+
+  <!-- FORM INSERIMENTO -->
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h5 class="card-title mb-3">Cerca un CAP</h5>
+
+      <form action="/" method="post" class="row g-3">
+
+        <div class="col-md-6">
+          <label for="cap" class="form-label">CAP</label>
+          <input type="text" class="form-control" id="cap" name="cap" placeholder="41015" required>
+        </div>
+
+        <div class="col-md-6">
+          <label for="umarell" class="form-label">Cerca gli umarell </label>
+          <input type="checkbox"  id="umarell" name="umarell" value="i want umarells">
+        </div>
+
+        <div class="col-md-6">
+          <label for="cantieri" class="form-label"> Cerca i cantieri </label>
+          <input type="checkbox"  id="cantieri" name="cantieri">
+        </div>
+
+        <div class="col-12 text-end">
+          <button type="submit" class="btn btn-primary">
+            Cerca
+          </button>
+        </div>
+
+      </form>
+       </div>
+  </div>
+
+</div>
+
+
+{% if umarell %}
+<div class="card shadow-sm mt-4">
+  <div class="card-body">
+    <h4 class="mb-3">Lista degli umarell corrispondenti al CAP ricercato</h4>
+
+    <div class="table-responsive">
+      <table class="table table-striped table-hover align-middle mb-0">
+        <thead class="table-light">
+          <tr>
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>CAP</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for u in umarell %}
+          <tr>
+            <td>{{ u.nome }}</td>
+            <td>{{ u.cognome }}</td>
+            <td>{{ u.cap }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+{% endif %}
+
+
+{% if cantieri %}
+<div class="card shadow-sm mt-4">
+  <div class="card-body">
+    <h4 class="mb-3">Lista dei cantieri corrispondenti al CAP ricercato</h4>
+
+    <div class="table-responsive">
+      <table class="table table-striped table-hover align-middle mb-0">
+        <thead class="table-light">
+          <tr>
+            <th>Indirizzo</th>
+            <th>CAP</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for c in cantieri %}
+          <tr>
+            <td>{{ c.indirizzo }}</td>
+            <td>{{ c.cap }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+{% endif %}
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

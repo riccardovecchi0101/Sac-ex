@@ -1,0 +1,223 @@
+version 3
+run rete_rho90_cv5-1-20260129-11:45:48-85885
+attr configname rete_rho90_cv5
+attr datetime 20260129-11:45:48
+attr datetimef 20260129-114548
+attr experiment rete_rho90_cv5
+attr inifile rete.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network rete
+attr processid 85885
+attr repetition 1
+attr replication #1
+attr resultdir results
+attr runnumber 1
+attr seedset 1
+config cmdenv-performance-display false
+config cmdenv-status-frequency 60s
+config extends rete_Base
+config **.rho 0.9
+config **.cv 0.5
+config description "MG1 – sweep rho e cv"
+config **.mu 100
+config **.sink.lifeTime.result-recording-modes +histogram
+config **.srv.serviceTime.result-recording-modes +histogram
+config ned-path .;../environment/samples/queueinglib
+config network rete
+config sim-time-limit 300s
+config repeat 3
+config **.vector-recording false
+
+par rete.src typename "\"org.omnetpp.queueing.Source\""
+par rete.src numJobs -1
+par rete.src interArrivalTime 1s*exponential(1/lambda)
+attr unit s
+par rete.src jobName "\"job\""
+par rete.src jobType 0
+par rete.src jobPriority 0
+par rete.src startTime 0.00599562s
+attr unit s
+par rete.src stopTime -1s
+attr unit s
+scalar rete.src created:last 26975
+attr interpolationmode none
+attr recordingmode last
+attr title "the number of jobs created, last"
+par rete.srv typename "\"org.omnetpp.queueing.Queue\""
+par rete.srv capacity -1
+par rete.srv fifo true
+par rete.srv serviceTime "1s*lognormal(log(1/mu*sqrt(1+cv^2)), sqrt(log(1+cv^2)))"
+attr unit s
+scalar rete.srv busy:timeavg 0.89847979077639
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "server busy state, timeavg"
+scalar rete.srv queueingTime:mean 0.053972836804771
+attr interpolationmode none
+attr recordingmode mean
+attr title "queueing time at dequeue, mean"
+attr unit s
+scalar rete.srv queueingTime:max 0.455384054929
+attr interpolationmode none
+attr recordingmode max
+attr title "queueing time at dequeue, max"
+attr unit s
+scalar rete.srv queueLength:timeavg 4.8631599529779
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "queue length, timeavg"
+scalar rete.srv queueLength:max 41
+attr interpolationmode sample-hold
+attr recordingmode max
+attr title "queue length, max"
+scalar rete.srv dropped:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "drop event, count"
+par rete.sink typename "\"org.omnetpp.queueing.Sink\""
+par rete.sink keepJobs false
+scalar rete.sink generation:mean 0
+attr interpolationmode none
+attr recordingmode mean
+attr title "the generation of the arrived jobs, mean"
+scalar rete.sink generation:max 0
+attr interpolationmode none
+attr recordingmode max
+attr title "the generation of the arrived jobs, max"
+scalar rete.sink delaysVisited:mean 0
+attr interpolationmode none
+attr recordingmode mean
+attr title "the total number of delays visited by arrived jobs, mean"
+scalar rete.sink delaysVisited:max 0
+attr interpolationmode none
+attr recordingmode max
+attr title "the total number of delays visited by arrived jobs, max"
+scalar rete.sink queuesVisited:mean 0.89737213272957
+attr interpolationmode none
+attr recordingmode mean
+attr title "the total number of queues visited by arrived jobs, mean"
+scalar rete.sink queuesVisited:max 1
+attr interpolationmode none
+attr recordingmode max
+attr title "the total number of queues visited by arrived jobs, max"
+scalar rete.sink totalServiceTime:mean 0.010004599744713
+attr interpolationmode none
+attr recordingmode mean
+attr title "the total time spent  by arrived jobs, mean"
+attr unit s
+scalar rete.sink totalServiceTime:max 0.086524040985
+attr interpolationmode none
+attr recordingmode max
+attr title "the total time spent  by arrived jobs, max"
+attr unit s
+scalar rete.sink totalDelayTime:mean 0
+attr interpolationmode none
+attr recordingmode mean
+attr title "the total time spent in delay nodes by arrived jobs, mean"
+attr unit s
+scalar rete.sink totalDelayTime:max 0
+attr interpolationmode none
+attr recordingmode max
+attr title "the total time spent in delay nodes by arrived jobs, max"
+attr unit s
+scalar rete.sink totalQueueingTime:mean 0.053964276562165
+attr interpolationmode none
+attr recordingmode mean
+attr title "the total time spent in queues by arrived jobs, mean"
+attr unit s
+scalar rete.sink totalQueueingTime:max 0.455384054929
+attr interpolationmode none
+attr recordingmode max
+attr title "the total time spent in queues by arrived jobs, max"
+attr unit s
+scalar rete.sink lifeTime:mean 0.063968876306878
+attr interpolationmode none
+attr recordingmode mean
+attr title "lifetime of arrived jobs, mean"
+attr unit s
+scalar rete.sink lifeTime:max 0.46066939489
+attr interpolationmode none
+attr recordingmode max
+attr title "lifetime of arrived jobs, max"
+attr unit s
+statistic rete.sink lifeTime:histogram
+field count 26942
+field mean 0.063968876306878
+field stddev 0.057330853029401
+field min 0.002006425762
+field max 0.46066939489
+field sum 1723.4494654599
+field sqrsum 198.79752404645
+attr interpolationmode none
+attr recordingmode histogram
+attr title "lifetime of arrived jobs"
+attr unit s
+bin	-inf	0
+bin	0	1387
+bin	0.008	3182
+bin	0.016	2730
+bin	0.024	2549
+bin	0.032	2119
+bin	0.04	1767
+bin	0.048	1689
+bin	0.056	1502
+bin	0.064	1313
+bin	0.072	1152
+bin	0.08	983
+bin	0.088	781
+bin	0.096	666
+bin	0.104	618
+bin	0.112	591
+bin	0.12	498
+bin	0.128	392
+bin	0.136	364
+bin	0.144	327
+bin	0.152	304
+bin	0.16	234
+bin	0.168	245
+bin	0.176	214
+bin	0.184	202
+bin	0.192	180
+bin	0.2	149
+bin	0.208	138
+bin	0.216	125
+bin	0.224	104
+bin	0.232	68
+bin	0.24	67
+bin	0.248	52
+bin	0.256	28
+bin	0.264	24
+bin	0.272	29
+bin	0.28	24
+bin	0.288	20
+bin	0.296	11
+bin	0.304	12
+bin	0.312	11
+bin	0.32	16
+bin	0.328	2
+bin	0.336	11
+bin	0.344	10
+bin	0.352	8
+bin	0.36	7
+bin	0.368	5
+bin	0.376	5
+bin	0.384	0
+bin	0.392	2
+bin	0.4	0
+bin	0.408	3
+bin	0.416	2
+bin	0.424	9
+bin	0.432	7
+bin	0.44	1
+bin	0.448	1
+bin	0.456	2
+bin	0.464	0
+par rete typename "\"rete\""
+par rete mu 100
+par rete rho 0.9
+par rete lambda 90
+par rete cv 0.5
+

@@ -1,0 +1,215 @@
+version 3
+run rete_rho70_cv5-0-20260129-11:43:13-84436
+attr configname rete_rho70_cv5
+attr datetime 20260129-11:43:13
+attr datetimef 20260129-114313
+attr experiment rete_rho70_cv5
+attr inifile rete.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network rete
+attr processid 84436
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config cmdenv-performance-display false
+config cmdenv-status-frequency 60s
+config extends rete_Base
+config **.rho 0.7
+config **.cv 0.5
+config description "MG1 – sweep rho e cv"
+config **.mu 100
+config **.sink.lifeTime.result-recording-modes +histogram
+config **.srv.serviceTime.result-recording-modes +histogram
+config ned-path .;../environment/samples/queueinglib
+config network rete
+config sim-time-limit 300s
+config repeat 3
+config **.vector-recording false
+
+par rete.src typename "\"org.omnetpp.queueing.Source\""
+par rete.src numJobs -1
+par rete.src interArrivalTime 1s*exponential(1/lambda)
+attr unit s
+par rete.src jobName "\"job\""
+par rete.src jobType 0
+par rete.src jobPriority 0
+par rete.src startTime 0.0113696s
+attr unit s
+par rete.src stopTime -1s
+attr unit s
+scalar rete.src created:last 21132
+attr interpolationmode none
+attr recordingmode last
+attr title "the number of jobs created, last"
+par rete.srv typename "\"org.omnetpp.queueing.Queue\""
+par rete.srv capacity -1
+par rete.srv fifo true
+par rete.srv serviceTime "1s*lognormal(log(1/mu*sqrt(1+cv^2)), sqrt(log(1+cv^2)))"
+attr unit s
+scalar rete.srv busy:timeavg 0.70380927534235
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "server busy state, timeavg"
+scalar rete.srv queueingTime:mean 0.015454213957136
+attr interpolationmode none
+attr recordingmode mean
+attr title "queueing time at dequeue, mean"
+attr unit s
+scalar rete.srv queueingTime:max 0.18856889672
+attr interpolationmode none
+attr recordingmode max
+attr title "queueing time at dequeue, max"
+attr unit s
+scalar rete.srv queueLength:timeavg 1.0885074136781
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr title "queue length, timeavg"
+scalar rete.srv queueLength:max 20
+attr interpolationmode sample-hold
+attr recordingmode max
+attr title "queue length, max"
+scalar rete.srv dropped:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "drop event, count"
+par rete.sink typename "\"org.omnetpp.queueing.Sink\""
+par rete.sink keepJobs false
+scalar rete.sink generation:mean 0
+attr interpolationmode none
+attr recordingmode mean
+attr title "the generation of the arrived jobs, mean"
+scalar rete.sink generation:max 0
+attr interpolationmode none
+attr recordingmode max
+attr title "the generation of the arrived jobs, max"
+scalar rete.sink delaysVisited:mean 0
+attr interpolationmode none
+attr recordingmode mean
+attr title "the total number of delays visited by arrived jobs, mean"
+scalar rete.sink delaysVisited:max 0
+attr interpolationmode none
+attr recordingmode max
+attr title "the total number of delays visited by arrived jobs, max"
+scalar rete.sink queuesVisited:mean 0.70472403673199
+attr interpolationmode none
+attr recordingmode mean
+attr title "the total number of queues visited by arrived jobs, mean"
+scalar rete.sink queuesVisited:max 1
+attr interpolationmode none
+attr recordingmode max
+attr title "the total number of queues visited by arrived jobs, max"
+scalar rete.sink totalServiceTime:mean 0.0099942123526914
+attr interpolationmode none
+attr recordingmode mean
+attr title "the total time spent  by arrived jobs, mean"
+attr unit s
+scalar rete.sink totalServiceTime:max 0.056478740618
+attr interpolationmode none
+attr recordingmode max
+attr title "the total time spent  by arrived jobs, max"
+attr unit s
+scalar rete.sink totalDelayTime:mean 0
+attr interpolationmode none
+attr recordingmode mean
+attr title "the total time spent in delay nodes by arrived jobs, mean"
+attr unit s
+scalar rete.sink totalDelayTime:max 0
+attr interpolationmode none
+attr recordingmode max
+attr title "the total time spent in delay nodes by arrived jobs, max"
+attr unit s
+scalar rete.sink totalQueueingTime:mean 0.015453795132918
+attr interpolationmode none
+attr recordingmode mean
+attr title "the total time spent in queues by arrived jobs, mean"
+attr unit s
+scalar rete.sink totalQueueingTime:max 0.18856889672
+attr interpolationmode none
+attr recordingmode max
+attr title "the total time spent in queues by arrived jobs, max"
+attr unit s
+scalar rete.sink lifeTime:mean 0.025448007485609
+attr interpolationmode none
+attr recordingmode mean
+attr title "lifetime of arrived jobs, mean"
+attr unit s
+scalar rete.sink lifeTime:max 0.197047447901
+attr interpolationmode none
+attr recordingmode max
+attr title "lifetime of arrived jobs, max"
+attr unit s
+statistic rete.sink lifeTime:histogram
+field count 21126
+field mean 0.025448007485609
+field stddev 0.021146833719454
+field min 0.001468862912
+field max 0.197047447901
+field sum 537.61460614099
+field sqrsum 23.128079197017
+attr interpolationmode none
+attr recordingmode histogram
+attr title "lifetime of arrived jobs"
+attr unit s
+bin	-inf	0
+bin	0	286
+bin	0.004	2622
+bin	0.008	3271
+bin	0.012	2694
+bin	0.016	2221
+bin	0.02	1829
+bin	0.024	1443
+bin	0.028	1195
+bin	0.032	975
+bin	0.036	792
+bin	0.04	620
+bin	0.044	552
+bin	0.048	453
+bin	0.052	405
+bin	0.056	296
+bin	0.06	257
+bin	0.064	210
+bin	0.068	193
+bin	0.072	142
+bin	0.076	112
+bin	0.08	99
+bin	0.084	69
+bin	0.088	55
+bin	0.092	44
+bin	0.096	36
+bin	0.1	36
+bin	0.104	30
+bin	0.108	20
+bin	0.112	20
+bin	0.116	26
+bin	0.12	28
+bin	0.124	18
+bin	0.128	13
+bin	0.132	16
+bin	0.136	4
+bin	0.14	3
+bin	0.144	9
+bin	0.148	3
+bin	0.152	4
+bin	0.156	4
+bin	0.16	4
+bin	0.164	2
+bin	0.168	1
+bin	0.172	4
+bin	0.176	3
+bin	0.18	1
+bin	0.184	2
+bin	0.188	1
+bin	0.192	1
+bin	0.196	2
+bin	0.2	0
+par rete typename "\"rete\""
+par rete mu 100
+par rete rho 0.7
+par rete lambda 70
+par rete cv 0.5
+

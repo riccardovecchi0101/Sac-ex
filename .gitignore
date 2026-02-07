@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual env
+venv/
+.venv/
+environment/
+
+omnet_analyzer/
+
+# Secrets
+credentials.json
+.env
+.env.*
+
+# Logs
+logs/
+*.log
+
+# File inutili
+.gcloudignore
+prove esame/
+gcp/
+

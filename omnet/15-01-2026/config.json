@@ -1,0 +1,46 @@
+{
+    "scenario_schema": {
+        "p": {"pattern": "**.p", "type": "real"} 
+    },
+    "metrics": {
+        "ResponseTime1": {"module": "**.sink_1", "scalar_name": "lifeTime:mean" ,"aggr": ["none"]},
+        "ResponseTime2": {"module": "**.sink_2", "scalar_name": "lifeTime:mean" ,"aggr": ["none"]},
+        "ResponseTimeGlobal": {"module": "**.sink_global", "scalar_name": "lifeTime:mean" ,"aggr": ["none"]}
+    },
+    "histograms": {
+        "ResponseTimeHistogram": {"module": "**.sink_global", "histogram_name": "lifeTime:histogram"}
+    },
+    "analyses": {
+        "Hist_RT": {
+            "outfile": "analisi/histogram.data",
+            "scenario": {"p": "0.5"},
+            "histogram": "ResponseTimeHistogram"
+        },
+        "es1": {
+            "outfile": "analisi/es1.data",
+            "scenarios": {
+                "fixed": { "p": "0.5" },
+                "range": []
+            },
+            "metrics": [
+                {"metric": "ResponseTime1", "aggr": "none"},
+                {"metric": "ResponseTime2", "aggr": "none"},
+                {"metric": "ResponseTimeGlobal", "aggr": "none"}
+                    ]
+        },
+        "es3":{
+            "outfile":"analisi/es3.data",
+            "scenarios": {
+                "fixed": {},
+                "range": ["p"]
+            },
+            "metrics": [
+                  {"metric": "ResponseTime1", "aggr": "none"},
+                {"metric": "ResponseTime2", "aggr": "none"},
+                {"metric": "ResponseTimeGlobal", "aggr": "none"}
+        
+        ]
+        }
+
+    }
+}

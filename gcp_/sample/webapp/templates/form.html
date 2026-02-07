@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Consumi Elettrici</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+<div class="container py-5">
+
+  <!-- TITOLO -->
+  <div class="text-center mb-4">
+    <h1 class="fw-bold">Secret Santa in compagnia</h1>
+  </div>
+
+
+  <!-- FORM INSERIMENTO -->
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h5 class="card-title mb-3">Registrati al secret Santa!</h5>
+
+      <form action="/register" method="post" class="row g-3">
+
+        <div class="col-md-6">
+          <label for="name" class="form-label">Nome</label>
+          <input type="text" class="form-control" id="nome" name="nome" placeholder="Lorenzo" required>
+        </div>
+
+        <div class="col-md-6">
+          <label for="cognome" class="form-label">Cognome</label>
+          <input type="text" class="form-control" id="cognome" name="cognome" placeholder="Giovanotti" required>
+        </div>
+
+        <div class="col-md-6">
+          <label for="email" class="form-label">Email</label>
+          <input type="text" class="form-control" id="email" name="email" placeholder="Lollogiova@gmail.com" required>
+        </div>
+
+        <div class="col-12 text-end">
+          <button type="submit" class="btn btn-primary">
+            Registrati
+          </button>
+        </div>
+
+      </form>
+       </div>
+  </div>
+
+
+  <!-- FORM INSERIMENTO -->
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h5 class="card-title mb-3">Estrai destinatario!</h5>
+
+      <form action="/destinatario/<email>" method="get" class="row g-3">
+
+        <div class="col-md-6">
+          <label for="name" class="form-label">Inserisci la tua email</label>
+          <input type="text" class="form-control" id="email" name="email" placeholder="GerryScotty@gmail.com" required>
+        </div>
+
+        <div class="col-12 text-end">
+          <button type="submit" class="btn btn-primary">
+            Estrai
+          </button>
+        </div>
+
+      </form>
+       </div>
+  </div>
+
+      {% if message %}
+      <div class="alert alert-info mt-3">
+        {{ message }}
+      </div>
+      {% endif %}
+
+      {% if destinatario %}
+      <h1> Ecco il destinatario del tuo regalo (Che culo)</h1>
+      <ul>
+        <li>{{destinatario.nome}}</li>
+        <li>{{destinatario.cognome}}</li>
+        <li>{{destinatario.email}}</li>
+      </ul>
+      {% endif %}
+   
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

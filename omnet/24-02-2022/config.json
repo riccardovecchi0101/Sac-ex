@@ -1,0 +1,64 @@
+{
+    "scenario_schema": {
+        "rho": { "pattern": "**.rho", "type": "real" },
+        "cv":  { "pattern": "**.cv",  "type": "real" }
+    },
+
+    "metrics": {
+        "ResponseTime": {
+            "module": "**.sink",
+            "scalar_name": "lifeTime:mean",
+            "aggr": ["none"]
+        },
+        "WaitingTime": {
+            "module": "**.sink",
+            "scalar_name": "totalQueueingTime:mean",
+            "aggr": ["none"]
+        }
+    },
+
+    "histograms": {
+        "ResponseTimeHistogram": {
+            "module": "**.sink",
+            "histogram_name": "lifeTime:histogram"
+        },
+        "ServiceTimeHistogram": {
+            "module": "**.srv",
+            "histogram_name": "serviceTime:histogram"
+    }
+
+    },
+
+    "analyses": {
+
+        "Hist_RT": {
+            "outfile": "analisi/histogram.data",
+            "scenario": {
+                "rho": [0.7, 0.9],
+                "cv":  [0.5, 1.0, 1.5]
+            },
+            "histogram": "ResponseTimeHistogram"
+        },
+        "Hist_ST": {
+        "outfile": "analisi/service_histogram.data",
+        "scenario": {
+            "rho": [0.7, 0.9],
+            "cv":  [0.5, 1.0, 1.5]
+        },
+        "histogram": "ServiceTimeHistogram"
+    },
+
+
+        "RT_rho_cv": {
+            "outfile": "analisi/22-04-2022.data",
+            "scenarios": {
+                "fixed":{},
+                "range": ["rho", "cv"]
+            },
+            "metrics": [
+                {"metric": "ResponseTime", "aggr": "none" },
+                {"metric": "WaitingTime", "aggr":"none"}
+            ]
+        }
+    }
+}

@@ -1,0 +1,159 @@
+CLEAN#01 -> OK
+update_vars([id1]=f7f55784-0377-11f1-9ad9-c3c3bc50ea35)
+update_vars([ts1]=1770394922123720122)
+POST#01_valid -> OK
+update_vars([id2]=f811e278-0377-11f1-9ad9-c3c3bc50ea35)
+update_vars([ts2]=1770394922310755666)
+POST#02_duplicate_hashtags -> OK
+update_vars([id3]=f8227bec-0377-11f1-9ad9-c3c3bc50ea35)
+update_vars([ts3]=1770394922418897204)
+POST#03_no_hashtags -> OK
+POST#04_empty -> OK
+POST#05_too_long -> OK
+POST#06_wrong_type -> OK
+GET#01_existing -> OK
+GET#02_not_found -> OK
+GET#03_empty_id -> OK
+TOPIC#01_cloud -> OK
+TOPIC#02_dup -> OK
+TOPIC#03_no_messages -> OK
+{'Chirps': {'CLEAN#01': {'error': 0,
+                         'expected_bd': None,
+                         'expected_sc': 200,
+                         'request_bd': None,
+                         'request_method': 'POST',
+                         'request_url': 'http://localhost:8080/api/v1/clean',
+                         'response_bd': None,
+                         'response_sc': 200},
+            'GET#01_existing': {'error': 0,
+                                'expected_bd': {'hashtags': ['#cloud', '#gcp'],
+                                                'id': 'f7f55784-0377-11f1-9ad9-c3c3bc50ea35',
+                                                'message': 'Hello world #cloud '
+                                                           '#gcp',
+                                                'timestamp': '1770394922123720122'},
+                                'expected_sc': 200,
+                                'request_bd': None,
+                                'request_method': 'GET',
+                                'request_url': 'http://localhost:8080/api/v1/chirps/f7f55784-0377-11f1-9ad9-c3c3bc50ea35',
+                                'response_bd': {'hashtags': ['#cloud', '#gcp'],
+                                                'id': 'f7f55784-0377-11f1-9ad9-c3c3bc50ea35',
+                                                'message': 'Hello world #cloud '
+                                                           '#gcp',
+                                                'timestamp': '1770394922123720122'},
+                                'response_sc': 200},
+            'GET#02_not_found': {'error': 0,
+                                 'expected_bd': None,
+                                 'expected_sc': 404,
+                                 'request_bd': None,
+                                 'request_method': 'GET',
+                                 'request_url': 'http://localhost:8080/api/v1/chirps/does-not-exist',
+                                 'response_bd': None,
+                                 'response_sc': 404},
+            'GET#03_empty_id': {'error': 0,
+                                'expected_bd': None,
+                                'expected_sc': 404,
+                                'request_bd': None,
+                                'request_method': 'GET',
+                                'request_url': 'http://localhost:8080/api/v1/chirps/',
+                                'response_bd': None,
+                                'response_sc': 404},
+            'POST#01_valid': {'error': 0,
+                              'expected_bd': {'hashtags': ['#cloud', '#gcp'],
+                                              'id': 'f7f55784-0377-11f1-9ad9-c3c3bc50ea35',
+                                              'message': 'Hello world #cloud '
+                                                         '#gcp',
+                                              'timestamp': '1770394922123720122'},
+                              'expected_sc': 201,
+                              'request_bd': 'Hello world #cloud #gcp',
+                              'request_method': 'POST',
+                              'request_url': 'http://localhost:8080/api/v1/chirps',
+                              'response_bd': {'hashtags': ['#cloud', '#gcp'],
+                                              'id': 'f7f55784-0377-11f1-9ad9-c3c3bc50ea35',
+                                              'message': 'Hello world #cloud '
+                                                         '#gcp',
+                                              'timestamp': '1770394922123720122'},
+                              'response_sc': 201},
+            'POST#02_duplicate_hashtags': {'error': 0,
+                                           'expected_bd': {'hashtags': ['#dup'],
+                                                           'id': 'f811e278-0377-11f1-9ad9-c3c3bc50ea35',
+                                                           'message': 'Test '
+                                                                      '#dup '
+                                                                      '#dup '
+                                                                      '#dup',
+                                                           'timestamp': '1770394922310755666'},
+                                           'expected_sc': 201,
+                                           'request_bd': 'Test #dup #dup #dup',
+                                           'request_method': 'POST',
+                                           'request_url': 'http://localhost:8080/api/v1/chirps',
+                                           'response_bd': {'hashtags': ['#dup'],
+                                                           'id': 'f811e278-0377-11f1-9ad9-c3c3bc50ea35',
+                                                           'message': 'Test '
+                                                                      '#dup '
+                                                                      '#dup '
+                                                                      '#dup',
+                                                           'timestamp': '1770394922310755666'},
+                                           'response_sc': 201},
+            'POST#03_no_hashtags': {'error': 0,
+                                    'expected_bd': {'hashtags': [],
+                                                    'id': 'f8227bec-0377-11f1-9ad9-c3c3bc50ea35',
+                                                    'message': 'Just plain '
+                                                               'text',
+                                                    'timestamp': '1770394922418897204'},
+                                    'expected_sc': 201,
+                                    'request_bd': 'Just plain text',
+                                    'request_method': 'POST',
+                                    'request_url': 'http://localhost:8080/api/v1/chirps',
+                                    'response_bd': {'hashtags': [],
+                                                    'id': 'f8227bec-0377-11f1-9ad9-c3c3bc50ea35',
+                                                    'message': 'Just plain '
+                                                               'text',
+                                                    'timestamp': '1770394922418897204'},
+                                    'response_sc': 201},
+            'POST#04_empty': {'error': 0,
+                              'expected_bd': None,
+                              'expected_sc': 400,
+                              'request_bd': '',
+                              'request_method': 'POST',
+                              'request_url': 'http://localhost:8080/api/v1/chirps',
+                              'response_bd': None,
+                              'response_sc': 400},
+            'POST#05_too_long': {'error': 0,
+                                 'expected_bd': None,
+                                 'expected_sc': 400,
+                                 'request_bd': 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+                                 'request_method': 'POST',
+                                 'request_url': 'http://localhost:8080/api/v1/chirps',
+                                 'response_bd': None,
+                                 'response_sc': 400},
+            'POST#06_wrong_type': {'error': 0,
+                                   'expected_bd': None,
+                                   'expected_sc': 400,
+                                   'request_bd': {'msg': 'hello'},
+                                   'request_method': 'POST',
+                                   'request_url': 'http://localhost:8080/api/v1/chirps',
+                                   'response_bd': None,
+                                   'response_sc': 400},
+            'TOPIC#01_cloud': {'error': 0,
+                               'expected_bd': ['f7f55784-0377-11f1-9ad9-c3c3bc50ea35'],
+                               'expected_sc': 200,
+                               'request_bd': None,
+                               'request_method': 'GET',
+                               'request_url': 'http://localhost:8080/api/v1/topics/cloud',
+                               'response_bd': ['f7f55784-0377-11f1-9ad9-c3c3bc50ea35'],
+                               'response_sc': 200},
+            'TOPIC#02_dup': {'error': 0,
+                             'expected_bd': ['f811e278-0377-11f1-9ad9-c3c3bc50ea35'],
+                             'expected_sc': 200,
+                             'request_bd': None,
+                             'request_method': 'GET',
+                             'request_url': 'http://localhost:8080/api/v1/topics/dup',
+                             'response_bd': ['f811e278-0377-11f1-9ad9-c3c3bc50ea35'],
+                             'response_sc': 200},
+            'TOPIC#03_no_messages': {'error': 0,
+                                     'expected_bd': None,
+                                     'expected_sc': 404,
+                                     'request_bd': None,
+                                     'request_method': 'GET',
+                                     'request_url': 'http://localhost:8080/api/v1/topics/nomatch',
+                                     'response_bd': None,
+                                     'response_sc': 404}}}

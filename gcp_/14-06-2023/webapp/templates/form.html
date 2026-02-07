@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Umarel e cantieri</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet">
+  </head>
+
+  <body class="bg-light">
+    <div class="container py-4">
+
+      <!-- Titolo -->
+      <div class="mb-4">
+        <h1> REGOLE DI ROUTING </h1>
+      </div>
+
+      <div class="card mb-4">
+        <div class="card-header">
+        
+
+        </div>
+        <div class="card-body p-0">
+          <table class="table table-striped mb-0">
+            <thead class="table-light">
+               <tr>
+            <th>
+              ip
+            </th>
+            <th>
+              netmask
+            </th>
+            <th>
+              gw
+            </th>
+          </tr>
+            </thead>
+            <tbody>
+              {% for r in rules %}
+              <tr>
+                <td>{{ r.ip}}</td>
+                <td>{{ r.netmaskCIDR}}</td>
+                <td>{{ r.gw}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    {% if correct_rule %}
+    <h2>correct rule is {{correct_rule}}</h2>
+    {% endif %}
+
+    
+      <!-- Search -->
+
+      <div class="card">
+        <div class="card-header">
+          Ricerca
+        </div>
+        <div class="card-body">
+          <form action="/getdata" method="post" class="row g-3">
+            <div class="col-md-6">
+              <label for="ip" class="form-label">ip</label>
+              <input type="text" id="ip" name="ip" class="form-control"> <!-- E' il nome che è importante'''-->
+      
+            </div>
+            <div class="col-md-6 d-flex align-items-end">
+              <button type="submit" class="btn btn-primary">
+                Cerca
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
+    </script>
+  </body>
+</html>

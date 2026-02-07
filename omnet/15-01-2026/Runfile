@@ -1,0 +1,223 @@
+all: results/rete_Base-\#0.sca results/rete_Base-\#1.sca results/rete_Base-\#2.sca results/rete_Base-\#3.sca results/rete_Base-\#4.sca results/rete_p005-\#0.sca results/rete_p005-\#1.sca results/rete_p005-\#2.sca results/rete_p005-\#3.sca results/rete_p005-\#4.sca results/rete_p010-\#0.sca results/rete_p010-\#1.sca results/rete_p010-\#2.sca results/rete_p010-\#3.sca results/rete_p010-\#4.sca results/rete_p015-\#0.sca results/rete_p015-\#1.sca results/rete_p015-\#2.sca results/rete_p015-\#3.sca results/rete_p015-\#4.sca results/rete_p020-\#0.sca results/rete_p020-\#1.sca results/rete_p020-\#2.sca results/rete_p020-\#3.sca results/rete_p020-\#4.sca results/rete_p025-\#0.sca results/rete_p025-\#1.sca results/rete_p025-\#2.sca results/rete_p025-\#3.sca results/rete_p025-\#4.sca results/rete_p030-\#0.sca results/rete_p030-\#1.sca results/rete_p030-\#2.sca results/rete_p030-\#3.sca results/rete_p030-\#4.sca results/rete_p035-\#0.sca results/rete_p035-\#1.sca results/rete_p035-\#2.sca results/rete_p035-\#3.sca results/rete_p035-\#4.sca results/rete_p040-\#0.sca results/rete_p040-\#1.sca results/rete_p040-\#2.sca results/rete_p040-\#3.sca results/rete_p040-\#4.sca results/rete_p045-\#0.sca results/rete_p045-\#1.sca results/rete_p045-\#2.sca results/rete_p045-\#3.sca results/rete_p045-\#4.sca results/rete_p050-\#0.sca results/rete_p050-\#1.sca results/rete_p050-\#2.sca results/rete_p050-\#3.sca results/rete_p050-\#4.sca
+results/rete_Base-\#0.sca: rete.ini
+	rm -f results/rete_Base-\#0.sca results/rete_Base-\#0.sca.gz results/rete_Base-\#0.vec results/rete_Base-\#0.vci
+	./run -u Cmdenv -c rete_Base -r 0 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_Base-\#1.sca: rete.ini
+	rm -f results/rete_Base-\#1.sca results/rete_Base-\#1.sca.gz results/rete_Base-\#1.vec results/rete_Base-\#1.vci
+	./run -u Cmdenv -c rete_Base -r 1 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_Base-\#2.sca: rete.ini
+	rm -f results/rete_Base-\#2.sca results/rete_Base-\#2.sca.gz results/rete_Base-\#2.vec results/rete_Base-\#2.vci
+	./run -u Cmdenv -c rete_Base -r 2 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_Base-\#3.sca: rete.ini
+	rm -f results/rete_Base-\#3.sca results/rete_Base-\#3.sca.gz results/rete_Base-\#3.vec results/rete_Base-\#3.vci
+	./run -u Cmdenv -c rete_Base -r 3 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_Base-\#4.sca: rete.ini
+	rm -f results/rete_Base-\#4.sca results/rete_Base-\#4.sca.gz results/rete_Base-\#4.vec results/rete_Base-\#4.vci
+	./run -u Cmdenv -c rete_Base -r 4 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p005-\#0.sca: rete.ini
+	rm -f results/rete_p005-\#0.sca results/rete_p005-\#0.sca.gz results/rete_p005-\#0.vec results/rete_p005-\#0.vci
+	./run -u Cmdenv -c rete_p005 -r 0 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p005-\#1.sca: rete.ini
+	rm -f results/rete_p005-\#1.sca results/rete_p005-\#1.sca.gz results/rete_p005-\#1.vec results/rete_p005-\#1.vci
+	./run -u Cmdenv -c rete_p005 -r 1 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p005-\#2.sca: rete.ini
+	rm -f results/rete_p005-\#2.sca results/rete_p005-\#2.sca.gz results/rete_p005-\#2.vec results/rete_p005-\#2.vci
+	./run -u Cmdenv -c rete_p005 -r 2 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p005-\#3.sca: rete.ini
+	rm -f results/rete_p005-\#3.sca results/rete_p005-\#3.sca.gz results/rete_p005-\#3.vec results/rete_p005-\#3.vci
+	./run -u Cmdenv -c rete_p005 -r 3 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p005-\#4.sca: rete.ini
+	rm -f results/rete_p005-\#4.sca results/rete_p005-\#4.sca.gz results/rete_p005-\#4.vec results/rete_p005-\#4.vci
+	./run -u Cmdenv -c rete_p005 -r 4 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p010-\#0.sca: rete.ini
+	rm -f results/rete_p010-\#0.sca results/rete_p010-\#0.sca.gz results/rete_p010-\#0.vec results/rete_p010-\#0.vci
+	./run -u Cmdenv -c rete_p010 -r 0 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p010-\#1.sca: rete.ini
+	rm -f results/rete_p010-\#1.sca results/rete_p010-\#1.sca.gz results/rete_p010-\#1.vec results/rete_p010-\#1.vci
+	./run -u Cmdenv -c rete_p010 -r 1 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p010-\#2.sca: rete.ini
+	rm -f results/rete_p010-\#2.sca results/rete_p010-\#2.sca.gz results/rete_p010-\#2.vec results/rete_p010-\#2.vci
+	./run -u Cmdenv -c rete_p010 -r 2 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p010-\#3.sca: rete.ini
+	rm -f results/rete_p010-\#3.sca results/rete_p010-\#3.sca.gz results/rete_p010-\#3.vec results/rete_p010-\#3.vci
+	./run -u Cmdenv -c rete_p010 -r 3 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p010-\#4.sca: rete.ini
+	rm -f results/rete_p010-\#4.sca results/rete_p010-\#4.sca.gz results/rete_p010-\#4.vec results/rete_p010-\#4.vci
+	./run -u Cmdenv -c rete_p010 -r 4 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p015-\#0.sca: rete.ini
+	rm -f results/rete_p015-\#0.sca results/rete_p015-\#0.sca.gz results/rete_p015-\#0.vec results/rete_p015-\#0.vci
+	./run -u Cmdenv -c rete_p015 -r 0 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p015-\#1.sca: rete.ini
+	rm -f results/rete_p015-\#1.sca results/rete_p015-\#1.sca.gz results/rete_p015-\#1.vec results/rete_p015-\#1.vci
+	./run -u Cmdenv -c rete_p015 -r 1 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p015-\#2.sca: rete.ini
+	rm -f results/rete_p015-\#2.sca results/rete_p015-\#2.sca.gz results/rete_p015-\#2.vec results/rete_p015-\#2.vci
+	./run -u Cmdenv -c rete_p015 -r 2 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p015-\#3.sca: rete.ini
+	rm -f results/rete_p015-\#3.sca results/rete_p015-\#3.sca.gz results/rete_p015-\#3.vec results/rete_p015-\#3.vci
+	./run -u Cmdenv -c rete_p015 -r 3 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p015-\#4.sca: rete.ini
+	rm -f results/rete_p015-\#4.sca results/rete_p015-\#4.sca.gz results/rete_p015-\#4.vec results/rete_p015-\#4.vci
+	./run -u Cmdenv -c rete_p015 -r 4 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p020-\#0.sca: rete.ini
+	rm -f results/rete_p020-\#0.sca results/rete_p020-\#0.sca.gz results/rete_p020-\#0.vec results/rete_p020-\#0.vci
+	./run -u Cmdenv -c rete_p020 -r 0 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p020-\#1.sca: rete.ini
+	rm -f results/rete_p020-\#1.sca results/rete_p020-\#1.sca.gz results/rete_p020-\#1.vec results/rete_p020-\#1.vci
+	./run -u Cmdenv -c rete_p020 -r 1 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p020-\#2.sca: rete.ini
+	rm -f results/rete_p020-\#2.sca results/rete_p020-\#2.sca.gz results/rete_p020-\#2.vec results/rete_p020-\#2.vci
+	./run -u Cmdenv -c rete_p020 -r 2 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p020-\#3.sca: rete.ini
+	rm -f results/rete_p020-\#3.sca results/rete_p020-\#3.sca.gz results/rete_p020-\#3.vec results/rete_p020-\#3.vci
+	./run -u Cmdenv -c rete_p020 -r 3 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p020-\#4.sca: rete.ini
+	rm -f results/rete_p020-\#4.sca results/rete_p020-\#4.sca.gz results/rete_p020-\#4.vec results/rete_p020-\#4.vci
+	./run -u Cmdenv -c rete_p020 -r 4 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p025-\#0.sca: rete.ini
+	rm -f results/rete_p025-\#0.sca results/rete_p025-\#0.sca.gz results/rete_p025-\#0.vec results/rete_p025-\#0.vci
+	./run -u Cmdenv -c rete_p025 -r 0 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p025-\#1.sca: rete.ini
+	rm -f results/rete_p025-\#1.sca results/rete_p025-\#1.sca.gz results/rete_p025-\#1.vec results/rete_p025-\#1.vci
+	./run -u Cmdenv -c rete_p025 -r 1 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p025-\#2.sca: rete.ini
+	rm -f results/rete_p025-\#2.sca results/rete_p025-\#2.sca.gz results/rete_p025-\#2.vec results/rete_p025-\#2.vci
+	./run -u Cmdenv -c rete_p025 -r 2 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p025-\#3.sca: rete.ini
+	rm -f results/rete_p025-\#3.sca results/rete_p025-\#3.sca.gz results/rete_p025-\#3.vec results/rete_p025-\#3.vci
+	./run -u Cmdenv -c rete_p025 -r 3 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p025-\#4.sca: rete.ini
+	rm -f results/rete_p025-\#4.sca results/rete_p025-\#4.sca.gz results/rete_p025-\#4.vec results/rete_p025-\#4.vci
+	./run -u Cmdenv -c rete_p025 -r 4 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p030-\#0.sca: rete.ini
+	rm -f results/rete_p030-\#0.sca results/rete_p030-\#0.sca.gz results/rete_p030-\#0.vec results/rete_p030-\#0.vci
+	./run -u Cmdenv -c rete_p030 -r 0 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p030-\#1.sca: rete.ini
+	rm -f results/rete_p030-\#1.sca results/rete_p030-\#1.sca.gz results/rete_p030-\#1.vec results/rete_p030-\#1.vci
+	./run -u Cmdenv -c rete_p030 -r 1 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p030-\#2.sca: rete.ini
+	rm -f results/rete_p030-\#2.sca results/rete_p030-\#2.sca.gz results/rete_p030-\#2.vec results/rete_p030-\#2.vci
+	./run -u Cmdenv -c rete_p030 -r 2 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p030-\#3.sca: rete.ini
+	rm -f results/rete_p030-\#3.sca results/rete_p030-\#3.sca.gz results/rete_p030-\#3.vec results/rete_p030-\#3.vci
+	./run -u Cmdenv -c rete_p030 -r 3 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p030-\#4.sca: rete.ini
+	rm -f results/rete_p030-\#4.sca results/rete_p030-\#4.sca.gz results/rete_p030-\#4.vec results/rete_p030-\#4.vci
+	./run -u Cmdenv -c rete_p030 -r 4 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p035-\#0.sca: rete.ini
+	rm -f results/rete_p035-\#0.sca results/rete_p035-\#0.sca.gz results/rete_p035-\#0.vec results/rete_p035-\#0.vci
+	./run -u Cmdenv -c rete_p035 -r 0 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p035-\#1.sca: rete.ini
+	rm -f results/rete_p035-\#1.sca results/rete_p035-\#1.sca.gz results/rete_p035-\#1.vec results/rete_p035-\#1.vci
+	./run -u Cmdenv -c rete_p035 -r 1 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p035-\#2.sca: rete.ini
+	rm -f results/rete_p035-\#2.sca results/rete_p035-\#2.sca.gz results/rete_p035-\#2.vec results/rete_p035-\#2.vci
+	./run -u Cmdenv -c rete_p035 -r 2 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p035-\#3.sca: rete.ini
+	rm -f results/rete_p035-\#3.sca results/rete_p035-\#3.sca.gz results/rete_p035-\#3.vec results/rete_p035-\#3.vci
+	./run -u Cmdenv -c rete_p035 -r 3 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p035-\#4.sca: rete.ini
+	rm -f results/rete_p035-\#4.sca results/rete_p035-\#4.sca.gz results/rete_p035-\#4.vec results/rete_p035-\#4.vci
+	./run -u Cmdenv -c rete_p035 -r 4 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p040-\#0.sca: rete.ini
+	rm -f results/rete_p040-\#0.sca results/rete_p040-\#0.sca.gz results/rete_p040-\#0.vec results/rete_p040-\#0.vci
+	./run -u Cmdenv -c rete_p040 -r 0 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p040-\#1.sca: rete.ini
+	rm -f results/rete_p040-\#1.sca results/rete_p040-\#1.sca.gz results/rete_p040-\#1.vec results/rete_p040-\#1.vci
+	./run -u Cmdenv -c rete_p040 -r 1 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p040-\#2.sca: rete.ini
+	rm -f results/rete_p040-\#2.sca results/rete_p040-\#2.sca.gz results/rete_p040-\#2.vec results/rete_p040-\#2.vci
+	./run -u Cmdenv -c rete_p040 -r 2 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p040-\#3.sca: rete.ini
+	rm -f results/rete_p040-\#3.sca results/rete_p040-\#3.sca.gz results/rete_p040-\#3.vec results/rete_p040-\#3.vci
+	./run -u Cmdenv -c rete_p040 -r 3 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p040-\#4.sca: rete.ini
+	rm -f results/rete_p040-\#4.sca results/rete_p040-\#4.sca.gz results/rete_p040-\#4.vec results/rete_p040-\#4.vci
+	./run -u Cmdenv -c rete_p040 -r 4 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p045-\#0.sca: rete.ini
+	rm -f results/rete_p045-\#0.sca results/rete_p045-\#0.sca.gz results/rete_p045-\#0.vec results/rete_p045-\#0.vci
+	./run -u Cmdenv -c rete_p045 -r 0 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p045-\#1.sca: rete.ini
+	rm -f results/rete_p045-\#1.sca results/rete_p045-\#1.sca.gz results/rete_p045-\#1.vec results/rete_p045-\#1.vci
+	./run -u Cmdenv -c rete_p045 -r 1 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p045-\#2.sca: rete.ini
+	rm -f results/rete_p045-\#2.sca results/rete_p045-\#2.sca.gz results/rete_p045-\#2.vec results/rete_p045-\#2.vci
+	./run -u Cmdenv -c rete_p045 -r 2 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p045-\#3.sca: rete.ini
+	rm -f results/rete_p045-\#3.sca results/rete_p045-\#3.sca.gz results/rete_p045-\#3.vec results/rete_p045-\#3.vci
+	./run -u Cmdenv -c rete_p045 -r 3 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p045-\#4.sca: rete.ini
+	rm -f results/rete_p045-\#4.sca results/rete_p045-\#4.sca.gz results/rete_p045-\#4.vec results/rete_p045-\#4.vci
+	./run -u Cmdenv -c rete_p045 -r 4 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p050-\#0.sca: rete.ini
+	rm -f results/rete_p050-\#0.sca results/rete_p050-\#0.sca.gz results/rete_p050-\#0.vec results/rete_p050-\#0.vci
+	./run -u Cmdenv -c rete_p050 -r 0 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p050-\#1.sca: rete.ini
+	rm -f results/rete_p050-\#1.sca results/rete_p050-\#1.sca.gz results/rete_p050-\#1.vec results/rete_p050-\#1.vci
+	./run -u Cmdenv -c rete_p050 -r 1 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p050-\#2.sca: rete.ini
+	rm -f results/rete_p050-\#2.sca results/rete_p050-\#2.sca.gz results/rete_p050-\#2.vec results/rete_p050-\#2.vci
+	./run -u Cmdenv -c rete_p050 -r 2 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p050-\#3.sca: rete.ini
+	rm -f results/rete_p050-\#3.sca results/rete_p050-\#3.sca.gz results/rete_p050-\#3.vec results/rete_p050-\#3.vci
+	./run -u Cmdenv -c rete_p050 -r 3 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_p050-\#4.sca: rete.ini
+	rm -f results/rete_p050-\#4.sca results/rete_p050-\#4.sca.gz results/rete_p050-\#4.vec results/rete_p050-\#4.vci
+	./run -u Cmdenv -c rete_p050 -r 4 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+clean:
+	rm -f results/*.sca results/*.sca.gz results/*.vec results/*.vci

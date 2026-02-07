@@ -1,0 +1,1 @@
+la parte pubsub non ho idea di come si faccia

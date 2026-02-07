@@ -1,0 +1,2 @@
+#!/bin/sh
+opp_run -l $(dirname $0)/../environment/samples/queueinglib/queueinglib $*

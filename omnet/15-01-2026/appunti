@@ -1,0 +1,50 @@
+1 step: creare una rete: touch rete.ned
+2 step: parametri e configurazione rete
+3 step: collegamento rete
+4 step: configurazione run
+5 step: compilare mako: ../omnet_analyzer/update_template.py -t rete.ini.mako 
+6 step: creare script esecuzione
+7 step: ./run rete.ini
+8 step: creare runfile: ../omnet_analyzer/make_runfile.py -f rete.ini, make -j $(nproc) -f Runfile 
+9 step: importare i dati: touch config.json e riempirlo
+
+ "scenario_schema": {
+        "p": {"pattern": "**.p", "type": "real"} 
+    }, variabile per cui variano i test
+
+
+    metrics: obiettivo analisi
+
+     "analyses": {
+        "Hist_RT": {
+            "outfile": "results/histogram.data",
+            "scenario": {"rho": "0.7"},
+            "histogram": "ResponseTimeHistogram"
+        },
+        "Sens-rho": {
+            "outfile": "results/ResponseTime-rho.data",
+            "scenarios": {
+                "fixed": { "key": "value" },
+                "range": ["rho"]
+            },
+            "metrics": [
+                {"metric": "ResponseTime", "aggr": "none"}
+                    ]
+        }
+    }
+    in scenario rispetto a che cosa raccolgo dati
+    "
+
+    step:10 esegui raccolta dati: parse_data.py -c config.json -d database.db -j $(nproc) -r results/rete_rho*.sca
+
+    step11: ../omnet_analyzer/analyze_data.py -c config.json -d database.db analizzare i dati
+
+    step12: ripetere analisi dopo aver modificato file config.json
+
+    usare gnumeric per visualizzare analisi
+
+    step13: plottare grafico
+
+
+    make clean -f Runfile 
+rm -f results/*.sca results/*.sca.gz results/*.vec results/*.vci

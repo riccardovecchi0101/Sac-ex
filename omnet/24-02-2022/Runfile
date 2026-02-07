@@ -1,0 +1,87 @@
+all: results/rete_Base-\#0.sca results/rete_Base-\#1.sca results/rete_Base-\#2.sca results/rete_rho70_cv5-\#0.sca results/rete_rho70_cv5-\#1.sca results/rete_rho70_cv5-\#2.sca results/rete_rho70_cv10-\#0.sca results/rete_rho70_cv10-\#1.sca results/rete_rho70_cv10-\#2.sca results/rete_rho70_cv15-\#0.sca results/rete_rho70_cv15-\#1.sca results/rete_rho70_cv15-\#2.sca results/rete_rho90_cv5-\#0.sca results/rete_rho90_cv5-\#1.sca results/rete_rho90_cv5-\#2.sca results/rete_rho90_cv10-\#0.sca results/rete_rho90_cv10-\#1.sca results/rete_rho90_cv10-\#2.sca results/rete_rho90_cv15-\#0.sca results/rete_rho90_cv15-\#1.sca results/rete_rho90_cv15-\#2.sca
+results/rete_Base-\#0.sca: rete.ini
+	rm -f results/rete_Base-\#0.sca results/rete_Base-\#0.sca.gz results/rete_Base-\#0.vec results/rete_Base-\#0.vci
+	./run -u Cmdenv -c rete_Base -r 0 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_Base-\#1.sca: rete.ini
+	rm -f results/rete_Base-\#1.sca results/rete_Base-\#1.sca.gz results/rete_Base-\#1.vec results/rete_Base-\#1.vci
+	./run -u Cmdenv -c rete_Base -r 1 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_Base-\#2.sca: rete.ini
+	rm -f results/rete_Base-\#2.sca results/rete_Base-\#2.sca.gz results/rete_Base-\#2.vec results/rete_Base-\#2.vci
+	./run -u Cmdenv -c rete_Base -r 2 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_rho70_cv5-\#0.sca: rete.ini
+	rm -f results/rete_rho70_cv5-\#0.sca results/rete_rho70_cv5-\#0.sca.gz results/rete_rho70_cv5-\#0.vec results/rete_rho70_cv5-\#0.vci
+	./run -u Cmdenv -c rete_rho70_cv5 -r 0 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_rho70_cv5-\#1.sca: rete.ini
+	rm -f results/rete_rho70_cv5-\#1.sca results/rete_rho70_cv5-\#1.sca.gz results/rete_rho70_cv5-\#1.vec results/rete_rho70_cv5-\#1.vci
+	./run -u Cmdenv -c rete_rho70_cv5 -r 1 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_rho70_cv5-\#2.sca: rete.ini
+	rm -f results/rete_rho70_cv5-\#2.sca results/rete_rho70_cv5-\#2.sca.gz results/rete_rho70_cv5-\#2.vec results/rete_rho70_cv5-\#2.vci
+	./run -u Cmdenv -c rete_rho70_cv5 -r 2 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_rho70_cv10-\#0.sca: rete.ini
+	rm -f results/rete_rho70_cv10-\#0.sca results/rete_rho70_cv10-\#0.sca.gz results/rete_rho70_cv10-\#0.vec results/rete_rho70_cv10-\#0.vci
+	./run -u Cmdenv -c rete_rho70_cv10 -r 0 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_rho70_cv10-\#1.sca: rete.ini
+	rm -f results/rete_rho70_cv10-\#1.sca results/rete_rho70_cv10-\#1.sca.gz results/rete_rho70_cv10-\#1.vec results/rete_rho70_cv10-\#1.vci
+	./run -u Cmdenv -c rete_rho70_cv10 -r 1 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_rho70_cv10-\#2.sca: rete.ini
+	rm -f results/rete_rho70_cv10-\#2.sca results/rete_rho70_cv10-\#2.sca.gz results/rete_rho70_cv10-\#2.vec results/rete_rho70_cv10-\#2.vci
+	./run -u Cmdenv -c rete_rho70_cv10 -r 2 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_rho70_cv15-\#0.sca: rete.ini
+	rm -f results/rete_rho70_cv15-\#0.sca results/rete_rho70_cv15-\#0.sca.gz results/rete_rho70_cv15-\#0.vec results/rete_rho70_cv15-\#0.vci
+	./run -u Cmdenv -c rete_rho70_cv15 -r 0 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_rho70_cv15-\#1.sca: rete.ini
+	rm -f results/rete_rho70_cv15-\#1.sca results/rete_rho70_cv15-\#1.sca.gz results/rete_rho70_cv15-\#1.vec results/rete_rho70_cv15-\#1.vci
+	./run -u Cmdenv -c rete_rho70_cv15 -r 1 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_rho70_cv15-\#2.sca: rete.ini
+	rm -f results/rete_rho70_cv15-\#2.sca results/rete_rho70_cv15-\#2.sca.gz results/rete_rho70_cv15-\#2.vec results/rete_rho70_cv15-\#2.vci
+	./run -u Cmdenv -c rete_rho70_cv15 -r 2 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_rho90_cv5-\#0.sca: rete.ini
+	rm -f results/rete_rho90_cv5-\#0.sca results/rete_rho90_cv5-\#0.sca.gz results/rete_rho90_cv5-\#0.vec results/rete_rho90_cv5-\#0.vci
+	./run -u Cmdenv -c rete_rho90_cv5 -r 0 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_rho90_cv5-\#1.sca: rete.ini
+	rm -f results/rete_rho90_cv5-\#1.sca results/rete_rho90_cv5-\#1.sca.gz results/rete_rho90_cv5-\#1.vec results/rete_rho90_cv5-\#1.vci
+	./run -u Cmdenv -c rete_rho90_cv5 -r 1 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_rho90_cv5-\#2.sca: rete.ini
+	rm -f results/rete_rho90_cv5-\#2.sca results/rete_rho90_cv5-\#2.sca.gz results/rete_rho90_cv5-\#2.vec results/rete_rho90_cv5-\#2.vci
+	./run -u Cmdenv -c rete_rho90_cv5 -r 2 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_rho90_cv10-\#0.sca: rete.ini
+	rm -f results/rete_rho90_cv10-\#0.sca results/rete_rho90_cv10-\#0.sca.gz results/rete_rho90_cv10-\#0.vec results/rete_rho90_cv10-\#0.vci
+	./run -u Cmdenv -c rete_rho90_cv10 -r 0 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_rho90_cv10-\#1.sca: rete.ini
+	rm -f results/rete_rho90_cv10-\#1.sca results/rete_rho90_cv10-\#1.sca.gz results/rete_rho90_cv10-\#1.vec results/rete_rho90_cv10-\#1.vci
+	./run -u Cmdenv -c rete_rho90_cv10 -r 1 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_rho90_cv10-\#2.sca: rete.ini
+	rm -f results/rete_rho90_cv10-\#2.sca results/rete_rho90_cv10-\#2.sca.gz results/rete_rho90_cv10-\#2.vec results/rete_rho90_cv10-\#2.vci
+	./run -u Cmdenv -c rete_rho90_cv10 -r 2 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_rho90_cv15-\#0.sca: rete.ini
+	rm -f results/rete_rho90_cv15-\#0.sca results/rete_rho90_cv15-\#0.sca.gz results/rete_rho90_cv15-\#0.vec results/rete_rho90_cv15-\#0.vci
+	./run -u Cmdenv -c rete_rho90_cv15 -r 0 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_rho90_cv15-\#1.sca: rete.ini
+	rm -f results/rete_rho90_cv15-\#1.sca results/rete_rho90_cv15-\#1.sca.gz results/rete_rho90_cv15-\#1.vec results/rete_rho90_cv15-\#1.vci
+	./run -u Cmdenv -c rete_rho90_cv15 -r 1 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+results/rete_rho90_cv15-\#2.sca: rete.ini
+	rm -f results/rete_rho90_cv15-\#2.sca results/rete_rho90_cv15-\#2.sca.gz results/rete_rho90_cv15-\#2.vec results/rete_rho90_cv15-\#2.vci
+	./run -u Cmdenv -c rete_rho90_cv15 -r 2 -f rete.ini --cmdenv-performance-display=false --cmdenv-status-frequency=60s -s
+	sleep 1
+clean:
+	rm -f results/*.sca results/*.sca.gz results/*.vec results/*.vci

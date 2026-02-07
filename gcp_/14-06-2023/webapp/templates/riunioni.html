@@ -1,0 +1,35 @@
+<html>
+<body>
+    <ul>
+        {% for r in reunions %}
+        <li> {{r}}</li>
+        <table>
+        <thead>
+            <tr>
+
+                <th>data</th>
+                <th>durata</th>
+                <th>colpevole</th>
+                <th>vittime</th>
+                <th>orario di inizio</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>{{ r.data }}</td>
+                <td>{{ r.durata }}</td>
+                <td>{{ r.colpevole }}</td>
+                <td>
+                  {% for v in r.vittime %}
+                    {{v}}
+                  {% endfor %}
+                </td>
+                <td> {{ r.orario_inizio}}</td>
+            </tr>
+        </tbody>
+        {% endfor %}
+    </ul>
+    <p> totale ore perse: {{ totale_ore}}</p>
+</body>
+</html>

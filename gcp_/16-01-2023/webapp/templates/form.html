@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Consumi Elettrici</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+<div class="container py-5">
+
+  <!-- TITOLO -->
+  <div class="text-center mb-4">
+    <h1 class="fw-bold">Consumi elettrici</h1>
+  </div>
+
+  {% if consumi %}
+  {% for c in consumi %}
+  <ul>
+    <a href="{{ url_for('webapp.webapp_consumo', id=c.id) }}"><li>{{c.date_ts}}</li></a>
+  </ul>
+  {% endfor %}
+  {% else %}
+  <p> non ci sono consumi</p>
+  {% endif %}
+   
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+- api_name: "Chirps"
+  tests:
+
+    # -------------------------
+    # CLEAN DB
+    # -------------------------
+    - title: "CLEAN#01"
+      url: "/api/v1/clean"
+      method: POST
+      exp_rc: 200
+
+    # -------------------------
+    # POST /chirps
+    # -------------------------
+
+    - title: "POST#01_valid"
+      url: "/api/v1/chirps"
+      method: POST
+      body: "Hello world #cloud #gcp"
+      exp_rc: 201
+      exp_body: >
+        {
+          "id": "{{id1}}",
+          "message": "Hello world #cloud #gcp",
+          "hashtags": ["#cloud", "#gcp"],
+          "timestamp": "{{ts1}}"
+        }
+
+    - title: "POST#02_duplicate_hashtags"
+      url: "/api/v1/chirps"
+      method: POST
+      body: "Test #dup #dup #dup"
+      exp_rc: 201
+      exp_body: >
+        {
+          "id": "{{id2}}",
+          "message": "Test #dup #dup #dup",
+          "hashtags": ["#dup"],
+          "timestamp": "{{ts2}}"
+        }
+
+    - title: "POST#03_no_hashtags"
+      url: "/api/v1/chirps"
+      method: POST
+      body: "Just plain text"
+      exp_rc: 201
+      exp_body: >
+        {
+          "id": "{{id3}}",
+          "message": "Just plain text",
+          "hashtags": [],
+          "timestamp": "{{ts3}}"
+        }
+
+    - title: "POST#04_empty"
+      url: "/api/v1/chirps"
+      method: POST
+      body: ""
+      exp_rc: 400
+
+    - title: "POST#05_too_long"
+      url: "/api/v1/chirps"
+      method: POST
+      body: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      exp_rc: 400
+
+    - title: "POST#06_wrong_type"
+      url: "/api/v1/chirps"
+      method: POST
+      body: "{\"msg\": \"hello\"}"
+      exp_rc: 400
+
+    # -------------------------
+    # GET /chirps/{id}
+    # -------------------------
+
+    - title: "GET#01_existing"
+      url: "/api/v1/chirps/{{id1}}"
+      method: GET
+      exp_rc: 200
+      exp_body: >
+        {
+          "id": "{{id1}}",
+          "message": "Hello world #cloud #gcp",
+          "hashtags": ["#cloud", "#gcp"],
+          "timestamp": "{{ts1}}"
+        }
+
+    - title: "GET#02_not_found"
+      url: "/api/v1/chirps/does-not-exist"
+      method: GET
+      exp_rc: 404
+
+    - title: "GET#03_empty_id"
+      url: "/api/v1/chirps/"
+      method: GET
+      exp_rc: 404
+
+    # -------------------------
+    # GET /topics/{topic}
+    # -------------------------
+
+    - title: "TOPIC#01_cloud"
+      url: "/api/v1/topics/cloud"
+      method: GET
+      exp_rc: 200
+      exp_body: "[\"{{id1}}\"]"
+
+    - title: "TOPIC#02_dup"
+      url: "/api/v1/topics/dup"
+      method: GET
+      exp_rc: 200
+      exp_body: "[\"{{id2}}\"]"
+
+    - title: "TOPIC#03_no_messages"
+      url: "/api/v1/topics/nomatch"
+      method: GET
+      exp_rc: 404
+
+    # -------------------------
+    # CLEAN consistency
+    # -------------------------
+

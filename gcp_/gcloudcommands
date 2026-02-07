@@ -1,0 +1,277 @@
+GCloud utils — Firestore (Python) “per filo e per segno”
+
+Client:
+  db = firestore.Client(project="...")   # spesso puoi omettere project se auth è corretta
+
+Nota credenziali:
+  export GOOGLE_APPLICATION_CREDENTIALS=/path/credentials.json
+
+1) Oggetti fondamentali (chi è chi)
+----------------------------------
+- Client: firestore.Client() → entry point
+- CollectionReference: db.collection("NomeCollezione")
+- DocumentReference: db.collection("C").document("docId")  (o db.document("C/docId"))
+- DocumentSnapshot: risultato di .get() su un documento
+- Query: risultato di where/order_by/limit ecc. su una collection
+- WriteResult: metadati (update_time) di set/update/delete; per batch: lista di WriteResult
+
+2) Lettura: GET documento (e “documento non trovato”)
+-----------------------------------------------------
+doc_ref = db.collection("SecretSanta").document(email)
+snap = doc_ref.get()
+
+Cosa ritorna:
+- `.get()` NON lancia NotFound se il doc non esiste.
+- Ritorna SEMPRE un DocumentSnapshot.
+  - snap.exists → True/False
+  - snap.to_dict() → dict se esiste, None se non esiste
+
+Pattern corretto:
+  snap = doc_ref.get()
+  if not snap.exists:
+      # doc mancante
+      ...
+  data = snap.to_dict()
+
+Esempio:
+  snap = db.collection("users").document("u1").get()
+  if snap.exists:
+      print("OK", snap.id, snap.to_dict())
+  else:
+      print("MISSING", snap.id)
+
+3) Creazione/Scrittura: set(), create(), update()
+------------------------------------------------
+3.1 set()
+- doc_ref.set(data) scrive il documento (crea se non esiste, sovrascrive se esiste).
+- NON genera AlreadyExists/Conflict: è “upsert”.
+- doc_ref.set(data, merge=True) → merge parziale (non cancella campi non presenti).
+- doc_ref.set({"a": 1, "b": DELETE_FIELD}, merge=True) → cancella campo b
+
+Esempio:
+  doc_ref.set({"name": "Alice", "age": 20})           # overwrite totale
+  doc_ref.set({"age": 21}, merge=True)                # aggiorna solo age
+
+3.2 create()
+- doc_ref.create(data) crea SOLO se NON esiste.
+- Se esiste → eccezione `AlreadyExists` (409 semanticamente).
+
+Esempio:
+  try:
+      doc_ref.create({"name": "Alice"})
+  except exceptions.AlreadyExists:
+      print("Duplicato!")
+
+3.3 update()
+- doc_ref.update(data) aggiorna SOLO se esiste.
+- Se non esiste → eccezione `NotFound`.
+
+Esempio:
+  try:
+      doc_ref.update({"age": 22})
+  except exceptions.NotFound:
+      print("Non esiste → non posso update")
+
+Operazioni utili in update():
+  doc_ref.update({"counter": Increment(1)})
+  doc_ref.update({"tags": ArrayUnion(["x"])})
+  doc_ref.update({"tags": ArrayRemove(["x"])})
+  doc_ref.update({"last_seen": SERVER_TIMESTAMP})
+  doc_ref.update({"field_to_remove": DELETE_FIELD})
+
+4) Delete: delete() e semantica “NotFound”
+-----------------------------------------
+doc_ref.delete()
+
+Comportamento:
+- In Firestore, delete su doc inesistente è tipicamente NO-OP (non è un errore “NotFound”).
+- Quindi spesso NON riceverai NotFound (dipende dal contesto/SDK, ma in pratica non lo trattare
+  come errore: se vuoi sapere se esiste, fai get() prima con snap.exists).
+
+Pattern:
+  snap = doc_ref.get()
+  if not snap.exists:
+      return "not found"
+  doc_ref.delete()
+
+5) Iterare una collection (stream / list)
+----------------------------------------
+5.1 Stream documenti
+  col_ref = db.collection("SecretSanta")
+  for snap in col_ref.stream():
+      print(snap.id, snap.to_dict())
+
+- stream() ritorna un generator di DocumentSnapshot.
+- Attenzione: può essere costoso su collezioni grandi.
+
+5.2 list_documents() (solo ref, senza dati)
+  for doc_ref in db.collection("SecretSanta").list_documents():
+      print(doc_ref.id)
+      # se ti serve il contenuto:
+      snap = doc_ref.get()
+
+5.3 Documenti e subcollection
+  user_ref = db.collection("users").document("u1")
+  # subcollection "orders"
+  for order in user_ref.collection("orders").stream():
+      ...
+
+6) Query: where(), order_by(), limit(), start/end
+------------------------------------------------
+6.1 where (stile “nuovo” consigliato)
+  q = db.collection("users").where(filter=FieldFilter("age", ">=", 18))
+
+6.2 where (stile “classico” ancora usato)
+  q = db.collection("users").where("age", ">=", 18)
+
+Operatori tipici:
+  "=="  "!="  ">"  ">="  "<"  "<="
+  "in"  "not-in"
+  "array_contains"  "array_contains_any"
+
+Esempi:
+  # uguaglianza
+  q = db.collection("users").where("country", "==", "IT")
+  # IN
+  q = db.collection("users").where("role", "in", ["admin", "mod"])
+  # array contains
+  q = db.collection("posts").where("tags", "array_contains", "cloud")
+
+6.3 order_by
+  q = db.collection("routing").order_by("netmaskCIDR", direction=firestore.Query.DESCENDING)
+
+Nota:
+- spesso la query con where + order_by richiede un INDEX composito.
+- Se manca indice, Firestore lancia tipicamente `FailedPrecondition` e ti dà un link/istruzione.
+
+6.4 limit / offset
+  q = db.collection("users").order_by("age").limit(10)
+  q = db.collection("users").order_by("age").offset(10).limit(10)   # paginazione “semplice”
+
+6.5 start_at / start_after / end_at / end_before (paginazione seria)
+Richiede un ordine deterministico (order_by) e spesso un DocumentSnapshot come cursore.
+
+  base = db.collection("users").order_by("age").order_by("email")
+  page1 = base.limit(10).stream()
+
+  last = None
+  for snap in page1:
+      last = snap
+  if last:
+      page2 = base.start_after(last).limit(10).stream()
+
+6.6 Esecuzione query
+- Le query si eseguono con .stream()
+  for snap in q.stream(): ...
+- oppure .get() su query (alcune versioni supportano q.get()) ma .stream() è standard.
+
+7) Cosa genera NotFound / AlreadyExists / Conflict / “nulla”
+------------------------------------------------------------
+IMPORTANTE: Firestore Python usa eccezioni `google.api_core.exceptions.*`.
+
+7.1 “Documento non esiste” (ma NON eccezione)
+- doc_ref.get() → DocumentSnapshot con snap.exists == False
+- doc_ref.delete() → in pratica NO-OP (non contare su NotFound)
+
+7.2 NotFound (404 semantics)
+- doc_ref.update(...) su doc inesistente → exceptions.NotFound
+- transazioni con precondizioni fallite possono anche produrre NotFound
+
+7.3 AlreadyExists (409 semantics)
+- doc_ref.create(...) se doc già esiste → exceptions.AlreadyExists
+
+7.4 Conflict / Aborted (concorrenza / transazioni)
+In Firestore “Conflict” non è un errore tipico delle operazioni base; è più legato a:
+- transazioni
+- write con precondizioni
+- concorrenza elevata
+
+Eccezioni comuni in scenari concorrenti:
+- exceptions.Aborted: tipico “transaction aborted, retry”
+- exceptions.Conflict: meno comune, ma può apparire in alcuni contesti
+- exceptions.FailedPrecondition: indice mancante, vincoli, ecc.
+
+Regola pratica:
+- per transazioni: se Aborted → RETRY (con backoff).
+- per create duplicato: AlreadyExists.
+- per update su inesistente: NotFound.
+- per get su inesistente: snap.exists False (nessuna eccezione).
+
+8) Transazioni (per evitare race/duplicati)
+------------------------------------------
+Uso tipico: “check-then-write” atomico.
+
+  from google.cloud import firestore
+
+  @firestore.transactional
+  def register_user(transaction, doc_ref, data):
+      snap = doc_ref.get(transaction=transaction)
+      if snap.exists:
+          raise exceptions.AlreadyExists("User already exists")
+      transaction.create(doc_ref, data)
+
+  transaction = db.transaction()
+  register_user(transaction, db.collection("users").document("u1"), {"x": 1})
+
+Se c’è contesa, può comparire exceptions.Aborted → rifai la transazione.
+
+9) Batch write (più operazioni, 1 commit)
+-----------------------------------------
+  batch = db.batch()
+  ref1 = db.collection("c").document("a")
+  ref2 = db.collection("c").document("b")
+
+  batch.set(ref1, {"x": 1})
+  batch.update(ref2, {"y": 2})   # NotFound se ref2 non esiste (al commit)
+  batch.delete(ref1)
+
+  results = batch.commit()
+
+Nota:
+- Il batch non è “transaction”: non legge, non fa check; però raggruppa scritture.
+- Gli errori emergono al commit.
+
+10) Snippet pronti “da esame”
+-----------------------------
+10.1 Check esistenza dopo get()
+  snap = db.collection("X").document(docid).get()
+  if not snap.exists:
+      return {"message": "Not found"}, 404
+
+10.2 Duplicato (create)
+  try:
+      db.collection("X").document(docid).create(payload)
+      return {"message": "created"}, 201
+  except exceptions.AlreadyExists:
+      return {"message": "conflict"}, 409
+
+10.3 Update con NotFound
+  try:
+      db.collection("X").document(docid).update(payload)
+      return {"message": "ok"}, 200
+  except exceptions.NotFound:
+      return {"message": "not found"}, 404
+
+10.4 Query + ordinamento
+  q = (db.collection("routing")
+         .order_by("netmaskCIDR", direction=firestore.Query.DESCENDING))
+  for snap in q.stream():
+      ...
+
+10.5 Where + indice
+  q = (db.collection("users")
+         .where("country", "==", "IT")
+         .order_by("created_at", direction=firestore.Query.DESCENDING))
+  # se manca indice → FailedPrecondition (crea index composito)
+
+11) “Trucchi” e gotcha comuni
+-----------------------------
+- get() su doc inesistente NON alza NotFound: usare snap.exists.
+- delete() spesso non alza NotFound: se vuoi 404, controlla prima.
+- create() è l’unico “anti-duplicato” semplice: se esiste → AlreadyExists.
+- update() è l’unico “anti-phantom”: se non esiste → NotFound.
+- Where con disuguaglianze e order_by: spesso serve indice composito.
+- “in” e “array_contains_any” hanno limiti sul numero di elementi.
+- Se fai molte richieste concorrenti, usa transazioni o disegna idempotenza.
+
+Fine.

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Consumi Elettrici</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+<div class="container py-5">
+
+  <!-- TITOLO -->
+  <div class="text-center mb-4">
+    <h1 class="fw-bold">Chirps</h1>
+  </div>
+
+
+  <!-- FORM INSERIMENTO -->
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h5 class="card-title mb-3">Aggiungi messaggio!</h5>
+
+      <form action="/addmessage" method="post" class="row g-3">
+
+        <div class="col-md-6">
+          <label for="message" class="form-label">messaggio</label>
+          <input type="text" class="form-control" id="message" name="message" placeholder="ciao mondo #paolo" required>
+        </div>
+
+        <div class="col-12 text-end">
+          <button type="submit" class="btn btn-primary">
+            Aggiungi messaggio
+          </button>
+        </div>
+
+      </form>
+       </div>
+  </div>
+
+
+  <!-- FORM INSERIMENTO -->
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h5 class="card-title mb-3">Aggiungi messaggio!</h5>
+
+      <form action="/searchht" method="post" class="row g-3">
+
+        <div class="col-md-6">
+          <label for="ht" class="form-label">cerca in base a hashtag</label>
+          <input type="text" class="form-control" id="ht" name="ht" placeholder=" paolo(senza #)" required>
+        </div>
+
+        <div class="col-12 text-end">
+          <button type="submit" class="btn btn-primary">
+            Cerca ht
+          </button>
+        </div>
+
+      </form>
+       </div>
+  </div>
+
+
+      {% if message %}
+      <div class="alert alert-info mt-3">
+        {{ message }}
+      </div>
+      {% endif %}
+
+  
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
